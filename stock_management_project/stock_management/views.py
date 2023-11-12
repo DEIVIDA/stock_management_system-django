@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from .forms import StockCreateForm
+from django.shortcuts import render, redirect
 
 
 # Create your views here.
@@ -26,6 +27,8 @@ def add_item(request):
     form = StockCreateForm(request.POST or None)
     if form.is_valid():
         form.save()
+        return redirect("/list_item")
+
     context = {
         "form": form,
         "title": "Add Item",
