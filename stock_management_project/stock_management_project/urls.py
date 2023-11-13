@@ -21,7 +21,7 @@ from stock_management import views
 urlpatterns = [
     path("", views.home, name="home"),
     path("admin/", admin.site.urls),
-    path("list_items/", views.list_item, name="list_item"),
+    path("list_item/", views.list_item, name="list_items"),
     path("update_items/<str:pk>/", views.update_items, name="update_items"),
     path("delete_items/<str:pk>/", views.delete_items, name="delete_items"),
     path("add_item/", views.add_item, name="add_item"),

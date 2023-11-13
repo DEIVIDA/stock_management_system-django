@@ -24,6 +24,8 @@ class StockCreateForm(forms.ModelForm):
 
 
 class StockSearchForm(forms.ModelForm):
+    export_to_CSV = forms.BooleanField()
+
     class Meta:
         model = Stock
         fields = ["category", "item_name"]
