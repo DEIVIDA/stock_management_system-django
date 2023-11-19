@@ -6,6 +6,7 @@ import csv
 from django.contrib import messages
 from .forms import IssueForm, ReceiveForm
 from .forms import ReorderLevelForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -17,6 +18,7 @@ def home(request):
     return render(request, "home.html", context)
 
 
+@login_required
 def list_item(request):
     title = "List of Items"
     form = StockSearchForm(request.POST or None)
@@ -48,6 +50,7 @@ def list_item(request):
     return render(request, "list_item.html", context)
 
 
+@login_required
 def add_item(request):
     form = StockCreateForm(request.POST or None)
     if form.is_valid():

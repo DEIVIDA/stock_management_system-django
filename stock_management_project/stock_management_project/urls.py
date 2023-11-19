@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from stock_management import views
+from django.urls import include
 
 urlpatterns = [
     path("", views.home, name="home"),
@@ -29,4 +30,5 @@ urlpatterns = [
     path("issue_items/<str:pk>/", views.issue_items, name="issue_items"),
     path("receive_items/<str:pk>/", views.receive_items, name="receive_items"),
     path("reorder_level/<str:pk>/", views.reorder_level, name="reorder_level"),
+    path("accounts/", include("registration.backends.default.urls")),
 ]
