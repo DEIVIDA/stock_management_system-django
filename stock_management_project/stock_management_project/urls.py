@@ -25,4 +25,5 @@ urlpatterns = [
     path("update_items/<str:pk>/", views.update_items, name="update_items"),
     path("delete_items/<str:pk>/", views.delete_items, name="delete_items"),
     path("add_item/", views.add_item, name="add_item"),
+    path("stock_detail/<str:pk>/", views.stock_detail, name="stock_detail"),
 ]
