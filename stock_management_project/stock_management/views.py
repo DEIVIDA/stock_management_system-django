@@ -101,6 +101,7 @@ def issue_items(request, pk):
     form = IssueForm(request.POST or None, instance=queryset)
     if form.is_valid():
         instance = form.save(commit=False)
+        instance.receive_quantity = 0
         instance.quantity -= instance.issue_quantity
         instance.issue_by = str(request.user)
         messages.success(
@@ -130,6 +131,7 @@ def receive_items(request, pk):
     form = ReceiveForm(request.POST or None, instance=queryset)
     if form.is_valid():
         instance = form.save(commit=False)
+        instance.issue_quantity = 0
         instance.quantity += instance.receive_quantity
         instance.save()
         messages.success(
@@ -172,3 +174,14 @@ def reorder_level(request, pk):
         "form": form,
     }
     return render(request, "add_item.html", context)
+
+
+@login_required
+def list_history(request):
+    header = "LIST OF ITEMS"
+    queryset = StockHistory.objects.all()
+    context = {
+        "header": header,
+        "queryset": queryset,
+    }
+    return render(request, "list_history.html", context)
