@@ -1,5 +1,6 @@
 from django import forms
 from .models import Stock
+from .models import Category
 
 
 class StockCreateForm(forms.ModelForm):
@@ -53,3 +54,9 @@ class ReorderLevelForm(forms.ModelForm):
     class Meta:
         model = Stock
         fields = ["reorder_level"]
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ["name"]

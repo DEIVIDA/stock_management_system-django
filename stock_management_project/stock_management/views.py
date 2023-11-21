@@ -7,6 +7,7 @@ from django.contrib import messages
 from .forms import IssueForm, ReceiveForm
 from .forms import ReorderLevelForm
 from django.contrib.auth.decorators import login_required
+from .forms import CategoryForm
 
 
 # Create your views here.
@@ -185,3 +186,20 @@ def list_history(request):
         "queryset": queryset,
     }
     return render(request, "list_history.html", context)
+
+
+def add_category(request):
+    if request.method == "POST":
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/list_item")  # Redirect to a category list view
+    else:
+        form = CategoryForm()
+
+    return render(request, "add_category.html", {"form": form})
+
+
+def category_list(request):
+    categories = Category.objects.all()
+    # return render(request, "category_list.html", {"categories": categories})

@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "stock_management_project",
     "django.contrib.admin",
     "django.contrib.auth",
     "registration",

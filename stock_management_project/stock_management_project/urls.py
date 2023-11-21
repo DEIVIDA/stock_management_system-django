@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from stock_management import views
 from django.urls import include
+from stock_management.views import add_category, category_list
+
 
 urlpatterns = [
     path("", views.home, name="home"),
@@ -32,4 +34,6 @@ urlpatterns = [
     path("reorder_level/<str:pk>/", views.reorder_level, name="reorder_level"),
     path("accounts/", include("registration.backends.default.urls")),
     path("list_history/", views.list_history, name="list_history"),
+    path("add_category/", add_category, name="add_category"),
+    path("category_list/", category_list, name="category_list"),
 ]
