@@ -12,7 +12,7 @@ from .forms import CategoryForm
 
 # Create your views here.
 def home(request):
-    title = "Welcome: This is the Home Page"
+    title = "Welcome." " This is the Stock management system."
     context = {
         "title": title,
     }
